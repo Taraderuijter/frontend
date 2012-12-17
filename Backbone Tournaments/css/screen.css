@@ -37,6 +37,11 @@ th {
 th.team, td.team {
 	text-align:left;
 }
+.winner:after{
+	content: "*"; 
+	color: red;
+	font-size: 180%;
+}
 #pool {
 	list-style:none;
 }
