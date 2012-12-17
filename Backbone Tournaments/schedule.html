@@ -3,20 +3,34 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>Backbone.js Web App</title>
-		<link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="css/screen.css" />
+        <title>Threesome Ultimate Frisbee - Schedule</title>
+        <link rel="stylesheet" href="css/style.css" />
     </head>
     <body>
-		<div id="wrapper">
-			<h1 id="frisbee_league">Frisbee league</h1>
-			<ul id="league"></ul>
-		</div>	
-        
+	<header>
+            <h1><span>League: </span>AMSU - 12</h1>
+            <h1><span>Tournament: </span>Threesome</h1>
+        </header>
 
-        <script id="scheduleTemplate" type="text/template">
-				<h1><%= name %></h1>
-				<h2>Format: <strong><%= schedulingFormat %></strong></h2>
+        <article>
+            <header>
+                <h1>Pool A - Schedule</h1>
+            </header>
+            <table id="schedule">
+                <tr>
+                    <th>Monday 18 March</th>
+                    <th>Team</th>
+                    <th>Result</th>
+                    <th>Team</th>
+                </tr>
+            </table>
+        </article>
+        
+        <script id="gameTemplate" type="text/template">
+		<td><%= date %></td>
+                <td <% if(team1Score > team2Score){ %> class="winner" <% }; %> ><%= team1 %></td>
+                <td><%= team1Score + " - " + team2Score %></td>
+                <td <% if(team1Score < team2Score){ %> class="winner" <% }; %> ><%= team2 %></td>
         </script>
 
 		<!-- Libraries -->
@@ -25,7 +39,14 @@
         <script src="js/libs/underscore-min.js"></script>
         <script src="js/libs/backbone-min.js"></script>
 
-		<!-- Application -->
-        <script src="js/app/appSchedule.js"></script>
+        	<!-- Application -->
+	
+	<script src="js/app/models/game.js"></script>
+	<script src="js/app/collections/schedule.js"></script>
+	<script src="js/app/views/schedule/game.js"></script>
+	<script src="js/app/views/schedule/schedule.js"></script>
+	
+	<script src="js/app/app.js"></script>
+
     </body>
 </html>
