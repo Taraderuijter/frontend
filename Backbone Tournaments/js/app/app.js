@@ -32,5 +32,5 @@ FRISB.gameData = [
 
 // Kickstart the application by creating an instance of GameView
     //var pool = new FRISB.PoolView();
-    var games = new FRISB.ScheduleView();
+    FRISB.games = new FRISB.ScheduleView();
     //var schedule = new FRISB.GameView();

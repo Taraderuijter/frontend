@@ -12,11 +12,37 @@
             <h1><span>Tournament: </span>Threesome</h1>
         </header>
 
-        <article>
+        <article id="schedule">
             <header>
                 <h1>Pool A - Schedule</h1>
             </header>
-            <table id="schedule">
+	    
+	    <nav class="actions">
+		<ul>
+		    <li id="filter">
+		       <label>Select team:</label>
+		    </li>
+		    <li>
+			<button id="showForm">Add new game</button>
+		    </li>
+	        </ul>
+	    </nav>
+	    
+	    <section id="message"></section>
+	    
+	    <form id="addGame" action="#">
+		<h1>Add game</h1>
+		<button id="cancel">Cancel</button>
+		<div class="clearfix"></div>
+		<label for="date">Date:</label><input id="date" placeholder="Day, Time am/pm (Like: Monday, 10:00am)" type="text" />
+		<label for="team1">Team 1:</label><input id="team1" placeholder="Name of team 1" type="text" />
+		<label for="team1Score">Score Team 1:</label><input id="team1Score" placeholder="Points of team 1" type="text" />
+		<label for="team2">Team 2:</label><input id="team2" placeholder="Name of team 1" type="text" />
+		<label for="team2Score">Score Team 2:</label><input id="team2Score" placeholder="Points of team 2" type="text" />
+		<input type="submit" id="add" value="Add" />
+	    </form>
+		
+            <table id="games">
                 <tr>
                     <th>Monday 18 March</th>
                     <th>Team</th>
@@ -28,9 +54,10 @@
         
         <script id="gameTemplate" type="text/template">
 		<td><%= date %></td>
-                <td <% if(team1Score > team2Score){ %> class="winner" <% }; %> ><%= team1 %></td>
+                <td <% if(team1Score > team2Score || team1Score === team2Score){ %> class="winner" <% }; %> ><%= team1 %></td>
                 <td><%= team1Score + " - " + team2Score %></td>
-                <td <% if(team1Score < team2Score){ %> class="winner" <% }; %> ><%= team2 %></td>
+                <td <% if(team1Score < team2Score || team1Score === team2Score){ %> class="winner" <% }; %> ><%= team2 %></td>
+		<td><a href="#" class="delete">Delete</a></td>
         </script>
 
 		<!-- Libraries -->
