@@ -6,6 +6,11 @@
     line-height: 140%;
 
 }
+
+h2{
+	padding-left: 1em;
+}
+
 body > header{
 	background-color: rgba(100, 200, 100, 0.4);
 	text-align: center;
@@ -17,6 +22,12 @@ body > header h1 span{
 	font-size: 80%
 }
 
+form{ 
+	padding:1em; 
+	margin-bottom: 1em;
+ 	background-color: rgba(200, 90, 00, 0.3);
+	border-radius: 20px;
+} 
 
 /* Table */
 table{
@@ -33,9 +44,47 @@ tr:nth-child(even){
 .winner:after{
 	content: "*"; 
 	color: red;
-	font-size: 180%;
+	font-size: 120%;
 }
 
+#addTournament{
+	width:23%;
+}
+
+.delete{
+	color:white;
+	border-radius: 5px; 
+	background-color: orange; 
+	padding:2px; 
+
+}
+
+select:nth-child(3){
+	margin:0 6em 0 5.6em !important;	
+}
+select:nth-child(7){
+	margin-right:8em !important;	
+}
+input{ 
+	margin-left:4.2em;
+}
+#add{
+	float:right; 
+	margin:1em 2em 0 0;
+	padding: 0 2em 0 2em;
+}
+.actions{
+	margin: 0 0 0 3em;
+} 
+.actions ul li{ 
+	display:block;
+	float:left; 
+	width:10%;
+	margin:2em 0 1em 0;
+}
+form label{ 
+	margin-right:1em; 
+}
 
 /* Test data*/
 pre, pre header{

@@ -1,60 +1,79 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <title>Backbone.js Web App - Game</title>
-  	<link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/screen.css" />
     </head>
     <body>
-	pim's versie
 		<div id="wrapper">
-			<h1 id="game_result">Game result</h1>
-			<table id="game"></table>
+			<h1 id="frisbee_league">Frisbee league</h1>
+	        <article id="league">
+				<nav class="actions">
+					<ul>
+						<li id="filter">
+							<label>Show:</label>
+							
+						</li>
+						<li><button id="showForm">Add new tournament</button></li>
+					</ul>
+				</nav>
+				
+	        	<ul class="tournaments"></ul>
+				
+				<form id="addTournament" action="#" class="form-2">
+					<h1>Add tournament</h1>
+				    <label for="set">Set:</label><input id="set" placeholder="set" type="text" />
+				    <label for="team1">team1:</label><input id="team1"  placeholder="team name" type="text" />
+					<label for="team1Score">team1Score:</label><input id="team1Score"  placeholder="score" type="text" />
+					 <label for="team2">team2:</label><input id="team2"  placeholder="team name" type="text" />
+					<label for="team2Score">team2Score:</label><input id="team2Score"  placeholder="score" type="text" />
+					<div class="clearfix"><input type="submit" id="add" value="Add" /></div>
+				</form>
+	        </article>
+			
+			
+			<!-- article>
+				<header>
+					<h1>Pool A - Score Updates - <%= team1 %> vs. <%= team2 %></h1>
+				</header>
+			
+				<table id="gameScore">
+					<tr>
+						<th>Team</th>
+						<th>Result</th>
+						<th>Team</th>
+					</tr>
+					<tr>
+					
+					<td class="winner"><%= team1 %></td>
+						<td>3 - 2</td>
+						<td><%= team2 %></td>
+				
+					</tr>
+				</table>
+				<table id="setScore">
+					<tr>
+						<th>Set</th>
+						<th>Team</th>
+						<th>Points</th>
+						<th>Team</th>
+					</tr>
+				</table>
+			</article -->
 		</div>	
         
-		<header>
-            <h1><span>League:</span>AMSU - 12</h1>
-            <h1><span>Tournament:</span>Threesome</h1>
-        </header>
+		<!--<h1>Pool A - Score Updates - <%= team1 %> vs. <%= team2 %></h1>-->
+       
 		
         <script id="setTemplate" type="text/template">
-		<article>
-            <header>
-                <h1>Pool A - Score Updates - <%= team1 %> vs. <%= team2 %></h1>
-            </header>
-			
-            <table>
-                <tr>
-                    <th>Team</th>
-                    <th>Result</th>
-                    <th>Team</th>
-                </tr>
-
-                <tr>
-                    <td class="winner"><%= team1 %></td>
-                    <td>3 - 2</td>
-                    <td><%= team2 %></td>
-                </tr>
-            </table>
-
-            <table>
-                <tr>
-                    <th>Set</th>
-                    <th>Team</th>
-                    <th>Points</th>
-                    <th>Team</th>
-                </tr>
-                <tr>
-                    <td><%= set %></td>
+	                <td><%= set %></td>
                     <td><%= team1 %></td>
                     <td><%= team1Score %> - <%= team2Score %></td>
                     <td><%= team2 %></td>
-                </tr>
-            </table>
-        </article>
-				
+					<td><a href="#" class="delete">Delete</a></td>
         </script>
 		
 		<!-- Libraries -->
@@ -64,7 +83,18 @@
         <script src="js/libs/backbone-min.js"></script>
 
 		<!-- Application -->
-        <script src="js/app/appGame.js"></script>
+        <script src="js/app/app.js"></script>
+		
+			<!-- Models & Collections -->
+		<script src="js/app/models/set.js"></script>
+		<script src="js/app/collections/game.js"></script>
+		
+		
+
+		<!-- Views -->
+		<script src="js/app/views/game/setView2.js"></script>
+		<script src="js/app/views/game/gameView2.js"></script>
+
 				
     </body>
 </html>
