@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Threesome Ultimate Frisbee - Schedule</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+	<header>
+	    <h1>Leaguevine Tournament</h1>    
+	</header>
+	
+        <nav>
+            <ul class="nav">
+		<li><a href="#">Schedule</a></li>
+    	        <li><a href="#ranking">Ranking</a></li>
+            </ul>
+        </nav>
+
+        <div id="container">	 	
+    	</div><!-- fluid-container-->
+
+        <footer>
+            <p>Web application build by Tara, Pim &amp; Mari&euml;lle</p>
+        </footer>
+
+	<!-- Templates -->
+	
+	<!-- Schedule page -->
+	<script id="schedulePage" type="text/template">
+	    <article id="schedule">
+		<header>
+		    <h1>Pool B - Schedule - 04/03/2013</h1>
+		</header>
+		<table>
+		    <thead>
+			<tr>
+			    <th>Time</th>
+			    <th>Team</th>
+			    <th>Result</th>
+			    <th>Team</th>
+			</tr>
+		    </thead>
+		    <tbody id="games"></tbody>
+		</table>
+	    </article>
+	</script>
+	
+	<!-- Ranking page -->
+	<script id="rankingPage" type="text/template">
+	    <article id="ranking">
+	    	<header>
+		    <h1>Pool B - Ranking</h1>
+		    <p>Press a team for details</p>
+		</header>	    
+		<ol id="pool"></ol>
+	    </article>	        
+	</script>
+	
+	<!-- Game page -->
+	<script id="gamePage" type="text/template">		   
+	    <article id="game">
+	    	<header>
+		    <h1>Pool B - Beat the Polls vs. Reload</h1>
+		</header>		
+		<table>
+		    <thead>
+			<tr>
+			    <th>Set</th>
+			    <th>Team</th>
+			    <th>Points</th>
+			    <th>Team</th>
+			</tr>
+		    </thead>
+		    <tbody id="sets"></tbody>
+		</table>
+		<button id="showForm">Add new set</button>
+		<form id="addSet" action="#">
+		    <button id="cancel">Cancel</button>
+		    <h2>Add set</h2>
+		    <div class="clearfix"></div>
+		    <label for="team_1_score">Score Team 1:</label><input id="team_1_score" placeholder="0" type="number" min="0" max="4"/>
+		    <label for="team_2_score">Score Team 2:</label><input id="team_2_score" placeholder="0" type="number" min="0" max="4"/>
+		    <input type="submit" id="add" value="Add" />
+		</form>
+	    </article>        
+	</script>
+
+	<!-- Schedule Gametemplate -->
+	<script id="gameTemplate" type="text/template">
+		<td class="time"><%= $.format.date(new Date(start_time), 'hh:mm a') %></td>
+		<td <% if(team_1_score > team_2_score){ %> class="winner" <% }; %> class="team" ><%= team_1_name %></td>
+		<td class="numbers"><a href="#game/<%= id %> "><%= team_1_score + " - " + team_2_score %></a></td>
+		<td <% if(team_1_score < team_2_score){ %> class="winner" <% }; %> class="team" ><%= team_2_name %></td>
+	</script>
+	
+	<!-- Ranking Teamtemplate -->
+	<script id="teamTemplate" type="text/template">
+	    <h2 class="team"><%= team %></h2>
+	    <ul>
+		<li>Games Won: <%= wins %></li>
+		<li>Games Lost: <%= losses %></li>
+		<li>Points Won: <%= points_scored %></li>
+		<li>Points Lost: <%= points_allowed %></li>
+	    </ul>
+	</script>
+	
+	<!-- Game Settemplate -->
+	<script id="setTemplate" type="text/template">
+	    <td><%= set %></td>
+	    <td <% if(team_1_score > team_2_score){%> class="winner"<%}; %>><%= team1 %></td>
+	    <td><%= team_1_score %> - <%= team_2_score %></td>
+	    <td <% if(team_2_score > team_1_score){%> class="winner"<%}; %>><%= team2 %></td>
+	</script>
+    
+	<!-- Libraries -->
+	<script src="js/libs/jquery-1.7.1.min.js"></script>
+	<script src="js/libs/jquery-ui-1.10.0.custom.min.js"></script>
+	<script src="js/libs/jquery_date.js"></script>
+	<script src="js/libs/json2.js"></script>
+	<script src="js/libs/underscore-min.js"></script>
+	<script src="js/libs/backbone-min.js"></script>
+	
+	<script src="js/app/app.js"></script>
+    
+	<!-- Application -->
+	<script src="js/app/models/game.js"></script>
+	<script src="js/app/collections/schedule.js"></script>
+	<script src="js/app/views/schedule/game.js"></script>
+	<script src="js/app/views/schedule/schedule.js"></script>
+	    
+	<script src="js/app/models/team.js"></script>
+	<script src="js/app/collections/pool.js"></script>
+	<script src="js/app/views/ranking/team.js"></script>
+	<script src="js/app/views/ranking/pool.js"></script>
+	    
+	<script src="js/app/models/set.js"></script>
+	<script src="js/app/collections/game.js"></script>
+	<script src="js/app/views/game/game.js"></script>
+	<script src="js/app/views/game/set.js"></script>
+	
+	<script src="js/app/router.js"></script>
+	
+    </body>
+</html>
